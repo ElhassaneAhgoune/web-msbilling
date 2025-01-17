@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.upload-bills-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.upload-bills-header {
+  display: flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.upload-bills-header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin: 1px 0 0 270px;
+  padding: 10;
+}
+
+.back-btn {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.back-btn:hover {
+  color: #f00;
+}
+
+.upload-bills-content {
+  display: flex;
+  flex: 1;
+  background-color: #f2f2f2;
+}
+
+.sidebar {
+  width: 15%;
+  background-color: #d0d0d0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item {
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.sidebar-item.active {
+  background-color: #5a5252;
+  color: #fff;
+}
+
+.sidebar-item:hover {
+  background-color: #b0b0b0;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 60%;
+  height: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-box:hover {
+  background-color: #f0f0f0;
+}
+
+.upload-box-label {
+  cursor: pointer; /* La zone est cliquable */
+}
+
+.upload-box p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin: 10px 0 0 0;
+}
+
+.success-message {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #28a745; /* Vert pour le message de succès */
+  font-weight: bold;
+}
+
+.upload-icon {
+  color: #000;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+  transition: color 0.3s;
+}
+0
+.logout-btn:hover {
+  color: #f00;
+}

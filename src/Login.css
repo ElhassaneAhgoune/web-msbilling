@@ -1,0 +1,131 @@
+/* src/Login.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.left h1 {
+  font-size: 48px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left p {
+  font-size: 18px;
+  color: #555;
+  font-style: italic;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e0e0e0;
+}
+
+.login-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me input {
+  margin-right: 10px;
+}
+
+.login-btn {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #555;
+}
+
+.forgot-password {
+  margin-top: 10px;
+  color: #007BFF;
+  cursor: pointer;
+}
+
+.signup {
+  margin-top: 20px;
+}
+
+.signup a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+/* CSS spécifique pour le formulaire de SignUp */
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box form .input-group {
+  width: 100%;
+}
+
+.login-box form .input-group input {
+  margin-bottom: 15px;
+}
