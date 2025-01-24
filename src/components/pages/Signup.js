@@ -1,18 +1,23 @@
-// src/Signup.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importer useNavigate
+import { useNavigate } from "react-router-dom"; 
+import { signup } from "../../services/signupService";  // Importer le service de signup
 import "./Signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
+    username: "",
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     password: "",
     confirmPassword: "",
+    timezone: "paris", // Vous pouvez laisser "paris" par défaut
+    locale: "FR",     // Idem pour locale
+    roleId: 1         // Par défaut ou selon votre logique
   });
 
+  const [errorMessage, setErrorMessage] = useState(""); // Pour afficher les erreurs
   const navigate = useNavigate();  // Initialiser useNavigate
 
   const handleInputChange = (e) => {
@@ -23,10 +28,36 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic goes here
-    console.log("Form Submitted", formData);
+
+    // Vérifier que les mots de passe correspondent
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const result = await signup({
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phoneNumber: formData.phone,
+        timezone: formData.timezone,
+        locale: formData.locale,
+        roleId: formData.roleId,
+      });
+
+      console.log("Account created successfully:", result);
+
+      // Redirection vers la page de vérification d'email
+      navigate("/verification-email");
+    } catch (error) {
+      console.error("Error during signup:", error);
+      setErrorMessage("Signup failed: " + error.message);
+    }
   };
 
   const handleBackClick = () => {
@@ -44,6 +75,18 @@ const Signup = () => {
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div className="input-group">
               <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
@@ -52,6 +95,7 @@ const Signup = () => {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 placeholder="First Name"
+                required
               />
             </div>
             <div className="input-group">
@@ -63,6 +107,7 @@ const Signup = () => {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 placeholder="Last Name"
+                required
               />
             </div>
             <div className="input-group">
@@ -74,6 +119,7 @@ const Signup = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email"
+                required
               />
             </div>
             <div className="input-group">
@@ -85,6 +131,7 @@ const Signup = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 placeholder="Phone Number"
+                required
               />
             </div>
             <div className="input-group">
@@ -96,6 +143,7 @@ const Signup = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Password"
+                required
               />
             </div>
             <div className="input-group">
@@ -107,14 +155,17 @@ const Signup = () => {
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
                 placeholder="Confirm Password"
+                required
               />
             </div>
+
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
             <button type="submit" className="signup-btn">
               Create Account
             </button>
           </form>
 
-          {/* Bouton Back */}
           <button onClick={handleBackClick} className="back-to-login-btn">
             Back to Login
           </button>

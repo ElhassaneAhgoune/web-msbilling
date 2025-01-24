@@ -5,7 +5,8 @@ import Signup from "./components/pages/Signup";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import Home from "./components/pages/Home"; // Page Home
 import UploadBills from "./components/pages/UploadBills"; // Page Upload Bills
-import DisplayBills from "./components/pages/DisplayBills"; // Page Display Bills (ajoutée)
+import DisplayBills from "./components/pages/DisplayBills"; // Page Display Bills
+import VerificationEmail from "./components/pages/VerificationEmail"; // Page Verification Email (ajoutée)
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/home" element={<Home />} />
         <Route path="/upload-bills" element={<UploadBills />} />
-        <Route path="/display-bills" element={<DisplayBills />} /> {/* Ajout de DisplayBills */}
+        <Route path="/display-bills" element={<DisplayBills />} />
+        <Route path="/verification-email" element={<VerificationEmail />} /> {/* Ajout de VerificationEmail */}
       </Routes>
     </Router>
   );
