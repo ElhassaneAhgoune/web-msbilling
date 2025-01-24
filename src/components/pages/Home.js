@@ -9,7 +9,11 @@ const Home = () => {
 
   // Fonction pour gérer le clic sur Logout
   const handleLogout = () => {
-    navigate("/"); // Redirige vers la page de Login
+    // Supprimer les données d'authentification (token par exemple)
+    localStorage.removeItem("accessToken");  // Si tu utilises localStorage pour stocker le token
+
+    // Rediriger vers la page de Login
+    navigate("/"); 
   };
 
   return (
@@ -29,11 +33,11 @@ const Home = () => {
           <Link to="/catalogues-management" className="sidebar-item">Catalogues Management</Link>
         </div>
         <div className="main-content">
-        <div className="card" onClick={() => navigate("/upload-bills")} >
-          <div className="card-icon">
-            <FontAwesomeIcon icon={faCloudUploadAlt} size="2x" />
-          </div>
-           <p>Upload Bills</p>
+          <div className="card" onClick={() => navigate("/upload-bills")}>
+            <div className="card-icon">
+              <FontAwesomeIcon icon={faCloudUploadAlt} size="2x" />
+            </div>
+            <p>Upload Bills</p>
           </div>
           <div className="card">
             <div className="card-icon">
