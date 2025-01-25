@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./UploadBills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCloudUploadAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
+
 
 const UploadBills = () => {
   const navigate = useNavigate();
@@ -13,10 +15,7 @@ const UploadBills = () => {
     navigate("/home");
   };
 
-  // Gestion du bouton "Logout"
-  const handleLogout = () => {
-    navigate("/");
-  };
+  const { handleLogout } = useAuth(); 
 
   // Gestion de l'importation du fichier
   const handleFileUpload = (event) => {

@@ -3,26 +3,28 @@ import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt, faFileAlt, faChartBar, faBook, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
+import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
+
+
 
 const Home = () => {
   const navigate = useNavigate(); // Initialiser useNavigate
 
-  // Fonction pour gérer le clic sur Logout
-  const handleLogout = () => {
-    // Supprimer les données d'authentification (token par exemple)
-    localStorage.removeItem("accessToken");  // Si tu utilises localStorage pour stocker le token
-
-    // Rediriger vers la page de Login
-    navigate("/"); 
+  const { handleLogout } = useAuth(); 
+  const user = {
+    username: "johndoe",
+    firstName: "John",
+    lastName: "Doe",
+    email: "johndoe@example.com",
+    phone: "123-456-7890",
   };
 
   return (
     <div className="home-container">
       <header className="home-header">
         <h1>MS-BILLING</h1>
-        <button className="logout-btn" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} size="lg" /> {/* Icône Logout */}
-        </button>
+        <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="home-content">
         <div className="sidebar">
