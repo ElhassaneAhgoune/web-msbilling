@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UploadBills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faCloudUploadAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faCloudUploadAlt, faGreaterThan} from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
+import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
+
 
 
 const UploadBills = () => {
@@ -16,6 +18,13 @@ const UploadBills = () => {
   };
 
   const { handleLogout } = useAuth(); 
+  const user = {
+    username: "johndoe",
+    firstName: "John",
+    lastName: "Doe",
+    email: "johndoe@example.com",
+    phone: "123-456-7890",
+  };
 
   // Gestion de l'importation du fichier
   const handleFileUpload = (event) => {
@@ -34,10 +43,8 @@ const UploadBills = () => {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
         </button>
-        <h1>UPLOAD BILLS</h1>
-        <button className="logout-btn" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-        </button>
+        <h1><span>MS-BILLING </span><FontAwesomeIcon icon={faGreaterThan} size="sm" /><span> UPLOAD BILLS</span></h1>
+        <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="upload-bills-content">
         <div className="sidebar">

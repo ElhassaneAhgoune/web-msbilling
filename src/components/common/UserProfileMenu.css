@@ -55,7 +55,7 @@
   }
   
   .menu-divider {
-    height: 1px;
+    height: 2px;
     background-color: #fdf9f9;
     margin: 15px 0;
   }
@@ -73,12 +73,12 @@
     font-size: 0.95rem;
     font-weight: 500;
     transition: background-color 0.3s ease;
-    margin-top: 183px; /* Pousse le bouton en bas du menu si nécessaire */
-    margin-right: 50px;
+    margin-top: 235px; /* Pousse le bouton en bas du menu si nécessaire */
+    margin-right: 100px;
   }
   
   .logout-btn:hover {
-    background-color: #0b0b0b;
+    background-color: #d0cdcd;
   }
   
   /* Animation */

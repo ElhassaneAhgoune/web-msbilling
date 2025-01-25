@@ -31,6 +31,8 @@ const UserProfileMenu = ({ user, onLogout }) => {
       {/* Menu déroulant */}
       {isMenuOpen && (
         <div className="menu-dropdown">
+          <strong>User Profile</strong>
+          <div className="menu-divider"></div>
           <div className="user-info">
             <p>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "8px" }} />
@@ -55,7 +57,7 @@ const UserProfileMenu = ({ user, onLogout }) => {
           </div>
           <div className="menu-divider"></div>
           <button className="logout-btn" onClick={onLogout}>
-            Logout
+          <strong>Logout</strong>
           </button>
         </div>
       )}

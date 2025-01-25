@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudUploadAlt, faFileAlt, faChartBar, faBook, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCloudUploadAlt, faFileAlt, faChartBar, faBook } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
 import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
 
