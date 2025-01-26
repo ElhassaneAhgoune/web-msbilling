@@ -1,4 +1,4 @@
-# Preview deployment  link : ec2-52-3-213-37.compute-1.amazonaws.com
+# Preview deployment  link : http://ec2-52-3-213-37.compute-1.amazonaws.com
 
 # Getting Started with Create React App
 
