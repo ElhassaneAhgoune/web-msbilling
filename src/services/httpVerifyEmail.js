@@ -1,6 +1,6 @@
 // src/services/httpVerifyEmail.js
 
-const API_URL = "http://192.168.39.223:8080/api";  // L'URL de base de votre API
+const API_URL = "http://ec2-52-3-213-37.compute-1.amazonaws.com:8080/api";  // L'URL de base de votre API
 
 // Fonction pour envoyer la requête de vérification de l'email
 export const httpVerifyEmail = async (url, method, data = null) => {

@@ -73,14 +73,33 @@
     font-size: 0.95rem;
     font-weight: 500;
     transition: background-color 0.3s ease;
-    margin-top: 235px; /* Pousse le bouton en bas du menu si nécessaire */
+    margin-top: 295px; /* Pousse le bouton en bas du menu si nécessaire */
     margin-right: 100px;
   }
   
   .logout-btn:hover {
     background-color: #d0cdcd;
   }
+  .update-profile-btn {
+    display: block;
+    width: 50%; /* Le bouton occupe toute la largeur */
+    padding: 5px 0;
+    background-color: #d0cdcd;
+    color: #181717;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-top: 0px; /* Pousse le bouton en bas du menu si nécessaire */
+    margin-right: 100px;
+  }
   
+  .update-profile-btn:hover {
+    background-color: #d0cdcd;
+  }
   /* Animation */
   @keyframes fadeIn {
     from {

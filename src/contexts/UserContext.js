@@ -1,37 +1,33 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "../services/http"; // Assurez-vous que ce fichier gère bien les appels API
 
-// Crée un contexte utilisateur
-const UserContext = createContext();
+export const UserContext = createContext();
 
-// Fournisseur du contexte utilisateur
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Si les données utilisateur sont stockées dans localStorage, les restaurer
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("/api/user/me");
+        console.log("Données utilisateur récupérées :", response.data); // Debug : affichez les données utilisateur
+        setUser(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données utilisateur :", error);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchUser();
   }, []);
-
-  // Mettre à jour localStorage chaque fois que l'utilisateur change
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-    }
-  }, [user]);
+  
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, loading }}>
       {children}
     </UserContext.Provider>
   );
-};
-
-// Hook personnalisé pour accéder au contexte utilisateur
-export const useUser = () => {
-  return useContext(UserContext);
 };

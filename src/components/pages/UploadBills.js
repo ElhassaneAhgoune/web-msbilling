@@ -1,40 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UploadBills.css";
+import useAuth from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faCloudUploadAlt, faGreaterThan} from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
+import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../../contexts/UserContext"; // Import du UserContext
 import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
-
-
 
 const UploadBills = () => {
   const navigate = useNavigate();
+  const { handleLogout } = useAuth();
+
   const [fileImported, setFileImported] = useState(false); // État pour le message de succès
+  const { user, loading } = useContext(UserContext); // Récupérer les données utilisateur dynamiques
 
   // Gestion du bouton "Back"
   const handleBack = () => {
     navigate("/home");
   };
 
-  const { handleLogout } = useAuth(); 
-  const user = {
-    username: "johndoe",
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@example.com",
-    phone: "123-456-7890",
-  };
-
   // Gestion de l'importation du fichier
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      // Le fichier a été importé, on affiche le message de succès
-      setFileImported(true);
+      setFileImported(true); // Le fichier a été importé avec succès
       console.log("File imported successfully: ", file.name);
     }
   };
+
+  // Gestion des états "loading" ou absence d'utilisateur
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <div>User not found</div>;
+  }
 
   return (
     <div className="upload-bills-container">
@@ -43,8 +44,12 @@ const UploadBills = () => {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
         </button>
-        <h1><span>MS-BILLING </span><FontAwesomeIcon icon={faGreaterThan} size="sm" /><span> UPLOAD BILLS</span></h1>
-        <UserProfileMenu user={user} onLogout={handleLogout} />
+        <h1>
+          <span>MS-BILLING </span>
+          <FontAwesomeIcon icon={faGreaterThan} size="sm" />
+          <span> UPLOAD BILLS</span>
+        </h1>
+        <UserProfileMenu user={user} onLogout={handleLogout} /> {/* Menu utilisateur dynamique */}
       </header>
       <div className="upload-bills-content">
         <div className="sidebar">

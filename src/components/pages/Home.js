@@ -1,25 +1,30 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt, faFileAlt, faChartBar, faBook } from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
-import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
-
-
+import useAuth from "../../hooks/useAuth";
+import UserProfileMenu from "../common/UserProfileMenu";
+import { UserContext } from "../../contexts/UserContext"; // Importer le contexte utilisateur
 
 const Home = () => {
-  const navigate = useNavigate(); // Initialiser useNavigate
+  const navigate = useNavigate();
+  const { handleLogout } = useAuth();
+  const { user, loading } = useContext(UserContext); // Récupérer user et loading depuis le contexte
+  useEffect(() => {
+    if (!loading && !user) {
+      // Si l'utilisateur n'est pas authentifié, redirigez vers la page de login
+      navigate("/login");
+    }
+  }, [user, loading, navigate]);
 
-  const { handleLogout } = useAuth(); 
-  const user = {
-    username: "johndoe",
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@example.com",
-    phone: "123-456-7890",
-  };
+  if (loading) {
+    return <div>Loading...</div>; // Afficher un indicateur de chargement
+  }
 
+  if (!user) {
+    return <div>User not found</div>; // Gérer le cas où les données utilisateur sont absentes
+  }
   return (
     <div className="home-container">
       <header className="home-header">
