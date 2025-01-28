@@ -87,9 +87,10 @@ body {
 
 .main-content {
   display: flex;
-  flex: 1;
-  justify-content: center;
+  flex-direction: column; /* Empile les éléments verticalement */
   align-items: center;
+  justify-content: flex-start;
+  flex: 1;
   padding: 20px;
 }
 
@@ -108,45 +109,42 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 70px;
 }
 
 .upload-box:hover {
   background-color: #f0f0f0;
 }
 
-.upload-box-label {
-  cursor: pointer; /* La zone est cliquable */
-}
-
-.upload-box p {
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;
-  margin: 10px 0 0 0;
-}
-
 .success-message {
   margin-top: 15px;
   font-size: 16px;
-  color: #28a745; /* Vert pour le message de succès */
+  color: #28a745;
   font-weight: bold;
 }
 
-.upload-icon {
-  color: #000;
+.select-box {
+  margin-top: 20px;
+  background-color: #d7d4d4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  text-align: center;
+  margin-top: 100px;
 }
 
-.logout-btn {
-  position: absolute;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #000;
-  transition: color 0.3s;
+.select-box h {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
 }
-0
-.logout-btn:hover {
-  color: #f00;
+
+.select-box select {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }

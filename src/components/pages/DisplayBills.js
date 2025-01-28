@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./DisplayBills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
 import { UserContext } from "../../contexts/UserContext"; // Import du UserContext
 import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
@@ -11,20 +11,11 @@ const DisplayBills = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuth();
 
-  const { user, loading } = useContext(UserContext); // Récupérer les données utilisateur dynamiques
+  const { user } = useContext(UserContext); // Récupérer les données utilisateur dynamiques
 
   const handleBack = () => {
     navigate("/home");
   };
-
-  // Gestion des états "loading" ou absence d'utilisateur
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    return <div>User not found</div>;
-  }
 
   return (
     <div className="display-bills-container">
@@ -33,8 +24,8 @@ const DisplayBills = () => {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
         </button>
-        <h1>DISPLAY BILLS</h1>
-        <UserProfileMenu user={user} onLogout={handleLogout} />{/* Menu utilisateur dynamique */}
+        <h1>MS-BILLING</h1>
+        <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="display-bills-content">
         <div className="sidebar">
@@ -50,6 +41,21 @@ const DisplayBills = () => {
           <div className="sidebar-item">Catalogues Management</div>
         </div>
         <div className="main-content">
+          <div
+            className="UB-title"
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              width: "100%",
+              textDecoration: "underline",
+              textDecorationColor: "black",
+              textDecorationThickness: "2px",
+            }}
+          >
+            <strong>DISPLAY BILLS</strong>
+          </div>
+
           <div className="filter-box">
             <h2>Search</h2>
             <form className="search-form">
@@ -87,6 +93,9 @@ const DisplayBills = () => {
                   <select>
                     <option>Select Customer Identifier</option>
                   </select>
+                </div>
+                <div className="form-group">
+                  <label>Customer Identifier Value</label>
                   <select>
                     <option>Select Customer Identifier Value</option>
                   </select>
@@ -99,14 +108,15 @@ const DisplayBills = () => {
                     <option>Select Billing Method</option>
                   </select>
                 </div>
-                <div className="form-buttons">
-                  <button type="submit" className="search-btn">
-                    Search
-                  </button>
-                  <button type="reset" className="clear-btn">
-                    Clear
-                  </button>
-                </div>
+              </div>
+              {/* Boutons alignés en bas à droite */}
+              <div className="form-buttons-container">
+                <button type="submit" className="search-btn">
+                  Search
+                </button>
+                <button type="reset" className="clear-btn">
+                  Clear
+                </button>
               </div>
             </form>
           </div>

@@ -14,17 +14,11 @@ const Home = () => {
   useEffect(() => {
     if (!loading && !user) {
       // Si l'utilisateur n'est pas authentifié, redirigez vers la page de login
-      navigate("/login");
+      navigate("/");
     }
   }, [user, loading, navigate]);
 
-  if (loading) {
-    return <div>Loading...</div>; // Afficher un indicateur de chargement
-  }
-
-  if (!user) {
-    return <div>User not found</div>; // Gérer le cas où les données utilisateur sont absentes
-  }
+  
   return (
     <div className="home-container">
       <header className="home-header">
@@ -39,7 +33,7 @@ const Home = () => {
           <Link to="/dashboards" className="sidebar-item">Dashboards</Link>
           <Link to="/catalogues-management" className="sidebar-item">Catalogues Management</Link>
         </div>
-        <div className="main-content">
+        <div className="home-main-content">
           <div className="card" onClick={() => navigate("/upload-bills")}>
             <div className="card-icon">
               <FontAwesomeIcon icon={faCloudUploadAlt} size="2x" />

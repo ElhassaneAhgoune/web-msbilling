@@ -91,6 +91,8 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 150%;
   margin: 0 auto;
+  margin-top: 120px;
+  width: 1100px;
 }
 
 .filter-box h2 {
@@ -110,6 +112,7 @@ body {
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  width: auto;
 }
 
 .form-group {
@@ -125,27 +128,34 @@ body {
 
 .form-group input, .form-group select {
   width: 80%;
-  padding: 12px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 2px;
 }
 
 .form-buttons {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  height : 5vh;
+  justify-content: flex-end; /* Aligner les boutons à droite */
+  gap: 30px; /* Espacement entre les boutons */
+  margin-top: 20px;
+}
+
+.search-btn,
+.clear-btn {
+  background-color: #5a5252;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px; /* Espacement interne */
+  font-size: 16px; /* Taille de la police */
+  border: 1px solid #ccc;
+  width: 90px; /* Même largeur pour les deux boutons */
+  text-align: center;
 }
 
 .search-btn {
   background-color: #5a5252;
   color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 5px 10px; /* Diminue le padding */
-  height: auto; /* Supprime les contraintes de hauteur */
-  font-size: 16px; /* Réduit légèrement la taille de police */
-  border: 1px solid #ccc; /* Bordure fine */
 }
 
 .search-btn:hover {
@@ -153,15 +163,8 @@ body {
 }
 
 .clear-btn {
- 
   background-color: #f2f2f2;
   color: #333;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 5px 10px; /* Diminue le padding */
-  height: auto; /* Supprime les contraintes de hauteur */
-  font-size: 16px; /* Réduit légèrement la taille de police */
-  border: 1px solid #ccc; /* Bordure fine */
 }
 
 .clear-btn:hover {

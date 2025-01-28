@@ -81,7 +81,7 @@ body {
   background-color: #c0c0c0;
 }
 
-.main-content {
+.home-main-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;

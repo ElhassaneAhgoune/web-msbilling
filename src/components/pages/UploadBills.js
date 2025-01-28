@@ -4,8 +4,8 @@ import "./UploadBills.css";
 import useAuth from "../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../../contexts/UserContext"; // Import du UserContext
-import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
+import { UserContext } from "../../contexts/UserContext";
+import UserProfileMenu from "../common/UserProfileMenu";
 
 const UploadBills = () => {
   const navigate = useNavigate();
@@ -29,13 +29,7 @@ const UploadBills = () => {
   };
 
   // Gestion des états "loading" ou absence d'utilisateur
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
-  if (!user) {
-    return <div>User not found</div>;
-  }
 
   return (
     <div className="upload-bills-container">
@@ -44,12 +38,8 @@ const UploadBills = () => {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
         </button>
-        <h1>
-          <span>MS-BILLING </span>
-          <FontAwesomeIcon icon={faGreaterThan} size="sm" />
-          <span> UPLOAD BILLS</span>
-        </h1>
-        <UserProfileMenu user={user} onLogout={handleLogout} /> {/* Menu utilisateur dynamique */}
+        <h1>MS-BILLING</h1>
+        <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="upload-bills-content">
         <div className="sidebar">
@@ -65,6 +55,37 @@ const UploadBills = () => {
           <div className="sidebar-item">Catalogues Management</div>
         </div>
         <div className="main-content">
+        <div 
+  className="UB-title" 
+  style={{ 
+    display: 'flex', 
+    justifyContent: 'flex-start', 
+    alignItems: 'flex-start', 
+    width: '100%',
+    textDecoration: 'underline',
+    textDecorationColor: 'black', /* Pour changer la couleur du soulignement */
+    textDecorationThickness: '2px' /* S'assure que l'élément prend tout l'espace horizontal */
+  }}
+>
+  <strong>UPLOAD BILLS</strong>
+</div>
+          {/* Liste déroulante placée en haut */}
+          <div className="select-box">
+            <h>Select Network:</h>
+            <form className="search-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <select>
+                    <option>Visa</option>
+                    <option>MasterCard</option>
+                    <option>Amex</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {/* Zone d'importation placée en dessous */}
           <div className="upload-box">
             {/* Zone d'importation en tant que bouton */}
             <label htmlFor="file-upload" className="upload-box-label">

@@ -10,6 +10,16 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Fonction utilitaire pour décoder un JWT (si nécessaire pour vérifier l'expiration)
+  const parseJwt = (token) => {
+    try {
+      return JSON.parse(atob(token.split(".")[1]));
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Gestion du login
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -18,14 +28,26 @@ const Login = () => {
     try {
       const { accessToken } = await authService.login(username, password);
 
+      // Vérification si le token est valide ou expiré
+      const decodedToken = parseJwt(accessToken);
+      if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
+        throw new Error("Token expired, please try again.");
+      }
+
       // Stocker le token dans le localStorage
       localStorage.setItem("accessToken", accessToken);
 
       // Redirection vers Home
       navigate("/home");
+
+      // Forcer un rechargement (utile si un état global pose problème)
+      window.location.reload();
     } catch (err) {
       console.error("Login failed:", err);
-      setError("Invalid username or password. Please try again.");
+      setError(
+        err.response?.data?.message ||
+          "Invalid username or password. Please try again."
+      );
     } finally {
       setLoading(false);
     }
