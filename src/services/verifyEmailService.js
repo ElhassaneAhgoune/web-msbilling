@@ -1,12 +1,12 @@
 // src/services/verifyEmailService.js
-import { httpVerifyEmail } from './httpVerifyEmail';  // Importer la fonction HTTP pour la vérification de l'email
+import http from './http';
 
-// Fonction pour effectuer la vérification de l'email
+// Exportation nommée
 export const verifyEmail = async (email, otp) => {
   try {
-    const result = await httpVerifyEmail('/auth/verify-email', 'POST', { email, otp });
-    return result;  // Retourne la réponse de l'API
+    const response = await http.post("/api/auth/verify-email", { email, otp });
+    return response.data;  // Retourne la réponse de l'API
   } catch (error) {
-    throw error;  // Propager l'erreur
+    throw error;
   }
 };

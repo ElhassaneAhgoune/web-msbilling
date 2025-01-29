@@ -1,3 +1,4 @@
+// src/services/http.js
 import axios from "axios";
 
 // Créer une instance Axios avec la configuration de base
