@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./DisplayBills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft , faGreaterThan} from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
-import { UserContext } from "../../contexts/UserContext"; // Import du UserContext
-import UserProfileMenu from "../common/UserProfileMenu"; // Import du composant
+import useAuth from "../../../hooks/useAuth"; // Import du hook personnalisé
+import { UserContext } from "../../../contexts/UserContext"; // Import du UserContext
+import UserProfileMenu from "../../common/UserProfileMenu"; // Import du composant
 
 const DisplayBills = () => {
   const navigate = useNavigate();

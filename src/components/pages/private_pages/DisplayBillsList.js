@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./DisplayBillsList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../../hooks/useAuth"; 
-import { UserContext } from "../../contexts/UserContext"; 
-import UserProfileMenu from "../common/UserProfileMenu"; 
+import useAuth from "../../../hooks/useAuth"; 
+import { UserContext } from "../../../contexts/UserContext"; 
+import UserProfileMenu from "../../common/UserProfileMenu"; 
 
 const DisplayBillsList = () => {
   const navigate = useNavigate();

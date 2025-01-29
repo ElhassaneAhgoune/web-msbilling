@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Importer useNavigate
 import "./ForgotPassword.css";
-import "../common/PublicPages.css"
+import "../../common/PublicPages.css"
 
 
 const ForgotPassword = () => {

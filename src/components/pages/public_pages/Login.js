@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import authService from "../../services/authService"; // Importer le service d'authentification
+import authService from "../../../services/authService"; // Importer le service d'authentification
 import "./Login.css";
-import "../common/PublicPages.css"
+import "../../common/PublicPages.css"
 
 const Login = () => {
   const [username, setUsername] = useState("");

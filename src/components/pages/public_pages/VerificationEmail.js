@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { verifyEmail } from "../../services/verifyEmailService";  // Importer le service de vérification
+import { verifyEmail } from "../../../services/verifyEmailService";  // Importer le service de vérification
 import "./VerificationEmail.css";  // Utilisation du même style que Signup
-import "../common/PublicPages.css"
+import "../../common/PublicPages.css"
 
 
 const VerificationEmail = () => {

@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext"; 
-import Login from "./components/pages/Login";
-import Signup from "./components/pages/Signup";
-import ForgotPassword from "./components/pages/ForgotPassword";
-import Home from "./components/pages/Home";
-import UploadBills from "./components/pages/UploadBills";
-import DisplayBills from "./components/pages/DisplayBills";
-import DisplayBillsList from "./components/pages/DisplayBillsList"; // ✅ Ajout de DisplayBillsList
-import VerificationEmail from "./components/pages/VerificationEmail";
+import Login from "./components/pages/public_pages/Login";
+import Signup from "./components/pages/public_pages/Signup";
+import ForgotPassword from "./components/pages/public_pages/ForgotPassword";
+import Home from "./components/pages/private_pages/Home";
+import UploadBills from "./components/pages/private_pages/UploadBills";
+import DisplayBills from "./components/pages/private_pages/DisplayBills";
+import DisplayBillsList from "./components/pages/private_pages/DisplayBillsList"; // ✅ Ajout de DisplayBillsList
+import VerificationEmail from "./components/pages/public_pages/VerificationEmail";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {

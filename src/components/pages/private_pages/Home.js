@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt, faFileAlt, faChartBar, faBook } from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../../hooks/useAuth";
-import UserProfileMenu from "../common/UserProfileMenu";
-import { UserContext } from "../../contexts/UserContext"; // Importer le contexte utilisateur
+import useAuth from "../../../hooks/useAuth";
+import UserProfileMenu from "../../common/UserProfileMenu";
+import { UserContext } from "../../../contexts/UserContext"; // Importer le contexte utilisateur
 
 const Home = () => {
   const navigate = useNavigate();

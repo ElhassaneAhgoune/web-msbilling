@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { signup } from "../../services/signupService";  // Importer le service de signup
+import { signup } from "../../../services/signupService";  // Importer le service de signup
 import "./Signup.css";
-import "../common/PublicPages.css"
+import "../../common/PublicPages.css"
 
 
 const Signup = () => {

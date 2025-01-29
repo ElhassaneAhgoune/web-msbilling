@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UploadBills.css";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../../contexts/UserContext";
-import UserProfileMenu from "../common/UserProfileMenu";
+import { UserContext } from "../../../contexts/UserContext";
+import UserProfileMenu from "../../common/UserProfileMenu";
 
 
 const UploadBills = () => {
@@ -13,7 +13,7 @@ const UploadBills = () => {
   const { handleLogout } = useAuth();
 
   const [fileImported, setFileImported] = useState(false); // État pour le message de succès
-  const { user, loading } = useContext(UserContext); // Récupérer les données utilisateur dynamiques
+  const { user } = useContext(UserContext); // Récupérer les données utilisateur dynamiques
 
   // Gestion du bouton "Back"
   const handleBack = () => {
