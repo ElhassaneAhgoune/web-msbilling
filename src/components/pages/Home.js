@@ -22,7 +22,13 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1>MS-BILLING</h1>
+      <button 
+  onClick={() => navigate("/home")} 
+  className="h-ms-billing-btn"
+>
+  MS-BILLING
+</button>
+
         <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="home-content">

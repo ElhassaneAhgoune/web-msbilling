@@ -122,3 +122,18 @@ body {
   color: #000;
   text-align: center;
 }
+.h-ms-billing-btn {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin: 1px 0 0 270px; /* Même positionnement */
+  padding: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.h-ms-billing-btn:hover {
+  color: #333; /* Optionnel : couleur au survol */
+}

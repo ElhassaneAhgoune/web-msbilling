@@ -7,6 +7,7 @@ import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-
 import { UserContext } from "../../contexts/UserContext";
 import UserProfileMenu from "../common/UserProfileMenu";
 
+
 const UploadBills = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuth();
@@ -38,7 +39,12 @@ const UploadBills = () => {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
         </button>
-        <h1>MS-BILLING</h1>
+        <button 
+  onClick={() => navigate("/home")} 
+  className="ms-billing-btn"
+>
+  MS-BILLING
+</button>
         <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       <div className="upload-bills-content">
@@ -56,19 +62,46 @@ const UploadBills = () => {
         </div>
         <div className="main-content">
         <div 
-  className="UB-title" 
-  style={{ 
-    display: 'flex', 
-    justifyContent: 'flex-start', 
-    alignItems: 'flex-start', 
-    width: '100%',
-    textDecoration: 'underline',
-    textDecorationColor: 'black', /* Pour changer la couleur du soulignement */
-    textDecorationThickness: '2px' /* S'assure que l'élément prend tout l'espace horizontal */
-  }}
->
-  <strong>UPLOAD BILLS</strong>
-</div>
+      className="UB-title" 
+      style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        width: '100%',
+        textDecoration: 'underline',
+        textDecorationColor: 'black',
+        textDecorationThickness: '2px',
+        gap: '5px' // Espace entre les boutons
+      }}
+    >
+      <button 
+        onClick={() => navigate("/home")} 
+        style={{ 
+          background: 'none', 
+          border: 'none', 
+          color: 'black', 
+          fontWeight: 'bold', 
+          fontSize: '16px', 
+          cursor: 'pointer', 
+          textDecoration: 'underline' 
+        }}
+      >
+        MS-BILLING
+      </button>
+      <FontAwesomeIcon icon={faGreaterThan}  style={{ fontSize: '14px', color: 'black' }} />      <button 
+        onClick={() => navigate("/upload-bills")} 
+        style={{ 
+          background: 'none', 
+          border: 'none', 
+          color: 'black', 
+          fontWeight: 'bold', 
+          fontSize: '16px', 
+          cursor: 'pointer', 
+          textDecoration: 'underline' 
+        }}
+      >
+        UPLOAD BILLS
+      </button>
+    </div>
           {/* Liste déroulante placée en haut */}
           <div className="select-box">
             <h>Select Network:</h>
