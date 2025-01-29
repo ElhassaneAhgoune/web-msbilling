@@ -1,0 +1,81 @@
+/* src/Login.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+    /* Pas besoin d'ajouter l'image de fond ici */
+}
+
+.public-pages-container {
+    display: flex;
+    height: 100vh;
+    background-image: url('../../assets/billing.jpg');  /* Ajout de l'image de fond à la section contenant les deux parties */
+    background-size: cover;  /* L'image couvre toute la surface */
+    background-position: center;  /* Centre l'image de fond */
+    background-attachment: fixed;  /* Fixe l'image lors du défilement */
+}
+
+.left {
+    flex: 1;
+    background: rgba(247, 247, 247, 0.7);  /* Légère transparence pour que l'image se voit */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.left h1 {
+    font-size: 48px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left p {
+    font-size: 18px;
+    color: #555;
+    font-style: italic;
+}
+
+.right {
+    flex: 1;
+    background: rgba(247, 247, 247, 0.7);  /* Légère transparence pour que l'image se voit */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Supprimer cette ligne pour ne pas couvrir l'image */
+    background: rgba(247, 247, 247, 0.7);  /* Légère transparence ici aussi */
+}
+.public-pages-boxes {
+    background: #beccd1;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.2);
+    border: #333;
+    text-align: center;
+    width: 340px;
+  }
+  
+  .public-pages-boxes h2 {
+    margin-bottom: 20px;
+  }
+
+.back-to-login-btn {
+    background: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.back-to-login-btn:hover {
+    background: #bbb;
+}

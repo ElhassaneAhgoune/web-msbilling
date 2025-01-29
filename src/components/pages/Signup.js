@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { signup } from "../../services/signupService";  // Importer le service de signup
 import "./Signup.css";
+import "../common/PublicPages.css"
+
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -65,13 +67,13 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div className="public-pages-container">
       <div className="left">
         <h1>MS-BILLING</h1>
         <p>Your digital assistant for streamlined invoicing</p>
       </div>
       <div className="right">
-        <div className="signup-box">
+        <div className="public-pages-boxes">
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">

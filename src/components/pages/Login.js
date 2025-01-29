@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/authService"; // Importer le service d'authentification
 import "./Login.css";
+import "../common/PublicPages.css"
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -54,13 +55,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="public-pages-container">
       <div className="left">
         <h1>MS-BILLING</h1>
         <p>Your digital assistant for streamlined invoicing</p>
       </div>
       <div className="right">
-        <div className="login-box">
+        <div className="public-pages-boxes">
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <div className="input-group">

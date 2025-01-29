@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Importer useNavigate
 import "./ForgotPassword.css";
+import "../common/PublicPages.css"
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -23,13 +25,13 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="forgot-password-container">
+    <div className="public-pages-container">
       <div className="left">
         <h1>MS-BILLING</h1>
         <p>Your digital assistant for streamlined invoicing</p>
       </div>
       <div className="right">
-        <div className="forgot-password-box">
+        <div className="public-pages-boxes">
           <h2>Reset Password</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">

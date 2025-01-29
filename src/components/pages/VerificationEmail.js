@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { verifyEmail } from "../../services/verifyEmailService";  // Importer le service de vérification
-import "./Signup.css";  // Utilisation du même style que Signup
+import "./VerificationEmail.css";  // Utilisation du même style que Signup
+import "../common/PublicPages.css"
+
 
 const VerificationEmail = () => {
   const [email, setEmail] = useState("");  // L'état pour l'email
@@ -39,13 +41,13 @@ const VerificationEmail = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div className="public-pages-container">
       <div className="left">
         <h1>MS-BILLING</h1>
         <p>Your digital assistant for streamlined invoicing</p>
       </div>
       <div className="right">
-        <div className="signup-box">
+        <div className="public-pages-boxes">
           <h2>Email Verification</h2>
           <form onSubmit={handleVerify}>
             <div className="input-group">
@@ -72,7 +74,7 @@ const VerificationEmail = () => {
               />
             </div>
 
-            <button type="submit" className="signup-btn">
+            <button type="submit" className="verify-btn">
               Verify
             </button>
           </form>
