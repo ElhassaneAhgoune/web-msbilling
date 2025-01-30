@@ -13,7 +13,7 @@ const UploadBillsValidation = () => {
   const location = useLocation();
   const { handleLogout } = useAuth();
   const { user } = useContext(UserContext);
-  const files = location.state?.files || [];
+  const files = location.state?.files || []; // Récupérer les fichiers passés via la navigation
 
   return (
     <div className="private-pages-container">
@@ -27,13 +27,13 @@ const UploadBillsValidation = () => {
       </header>
 
       <div className="private-pages-content">
-      <div className="sidebar">
-  <div className="sidebar-item active" onClick={() => navigate("/upload-bills")}>Upload Bills</div>
-  <div className="sidebar-item" onClick={() => navigate("/display-bills")}>Display Bills</div>
-  <div className="sidebar-item" onClick={() => navigate("/bills-summary")}>Bills Summary</div>
-  <div className="sidebar-item" onClick={() => navigate("/dashboards")}>Dashboards</div>
-  <div className="sidebar-item" onClick={() => navigate("/catalogues-management")}>Catalogues Management</div>
-</div>
+        <div className="sidebar">
+          <div className="sidebar-item active" onClick={() => navigate("/upload-bills")}>Upload Bills</div>
+          <div className="sidebar-item" onClick={() => navigate("/display-bills")}>Display Bills</div>
+          <div className="sidebar-item" onClick={() => navigate("/bills-summary")}>Bills Summary</div>
+          <div className="sidebar-item" onClick={() => navigate("/dashboards")}>Dashboards</div>
+          <div className="sidebar-item" onClick={() => navigate("/catalogues-management")}>Catalogues Management</div>
+        </div>
 
         <div className="main-content">
           <div className="private-pages-Path">
@@ -49,11 +49,11 @@ const UploadBillsValidation = () => {
             {files.length > 0 ? (
               <ul>
                 {files.map((file, index) => (
-                  <li key={index}>{file.name} - {file.lines} lignes</li>
+                  <li key={index}>📂 {file.name} - {file.size} bytes - {file.lines} lines</li>
                 ))}
               </ul>
             ) : (
-              <p>Aucun fichier téléchargé.</p>
+              <p>⚠️ No file uploaded</p>
             )}
             <p className="success-message">✅ File(s) uploaded successfully</p>
           </div>

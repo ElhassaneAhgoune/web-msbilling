@@ -6,6 +6,8 @@ const useAuth = () => {
   const handleLogout = () => {
     // Supprimer les données d'authentification
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+
 
     // Rediriger vers la page de Login
     navigate("/");
