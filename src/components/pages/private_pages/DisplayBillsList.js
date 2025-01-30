@@ -77,6 +77,7 @@ const DisplayBillsList = () => {
                     <td>{bill.reference}</td>
                     <td>
                       <button className="details-btn">View Details</button>
+                      <button className="delete-btn">Delete Bill</button>
                     </td>
                   </tr>
                 ))}

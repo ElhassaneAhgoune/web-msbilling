@@ -35,6 +35,8 @@
     border: 1px solid #131313;
     padding: 10px;
     text-align: left;
+    background-color: #f2f2f2; /* Ajout de la couleur de fond */
+
   }
   
   .bills-table th {
@@ -47,7 +49,21 @@
   }
   
   .details-btn {
-    background-color: #5a5252;
+    background-color: #52508d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .details-btn:hover {
+    background-color: #a39d9d;
+  }
+
+  .delete-btn {
+    background-color: #706393;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -55,8 +71,8 @@
     cursor: pointer;
   }
   
-  .details-btn:hover {
-    background-color: #4a4242;
+  .delete-btn:hover {
+    background-color: #ccc8c8;
   }
   
   
