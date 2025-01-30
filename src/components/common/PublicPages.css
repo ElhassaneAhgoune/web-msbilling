@@ -53,14 +53,25 @@ body {
     background: rgba(247, 247, 247, 0.7);  /* Légère transparence ici aussi */
 }
 .public-pages-boxes {
-    background: #beccd1;
+    background: linear-gradient(45deg, #b3c8cd, #7695ec, #78d8df);
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s infinite alternate;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.2);
-    border: #333;
     text-align: center;
     width: 340px;
-  }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 70%;
+    }
+    100% {
+        background-position: 100% 70%;
+    }
+}
+
   
   .public-pages-boxes h2 {
     margin-bottom: 20px;

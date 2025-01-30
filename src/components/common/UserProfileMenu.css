@@ -7,8 +7,8 @@
   .profile-icon {
     width: 40px;
     height: 40px;
-    background-color: #2f3132;
-    color: #fff;
+    background-color: #f0f0f0;
+    color: #302c6c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,9 @@
     position: absolute;
     top: 50px;
     right: 0;
-    background-color: #d0cdcd;
+    background: linear-gradient(45deg, #6f6f9b, #c4d0f1, #f6f6f9);
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s infinite alternate;
     border: 1px solid #d1d1d1;
     border-radius: 12px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -62,44 +64,48 @@
   
   .logout-btn {
     display: block;
-    width: 50%; /* Le bouton occupe toute la largeur */
+    width: 50%;
     padding: 5px 0;
-    background-color: #494747;
-    color: #ffffff;
+    background-color: transparent; /* Supprime l'arrière-plan */
+    color: #111010;
     border: none;
     border-radius: 6px;
     text-align: center;
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: background-color 0.3s ease;
-    margin-top: 295px; /* Pousse le bouton en bas du menu si nécessaire */
-    margin-right: 100px;
-  }
-  
-  .logout-btn:hover {
-    background-color: #d0cdcd;
-  }
-  .update-profile-btn {
-    display: block;
-    width: 50%; /* Le bouton occupe toute la largeur */
-    padding: 5px 0;
-    background-color: #d0cdcd;
-    color: #181717;
-    border: none;
-    border-radius: 6px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-    margin-top: 0px; /* Pousse le bouton en bas du menu si nécessaire */
-    margin-right: 100px;
-  }
-  
-  .update-profile-btn:hover {
-    background-color: #d0cdcd;
-  }
+    transition: opacity 0.3s ease; /* Animation douce sur l'opacité */
+    margin-top: 295px;
+    margin-right: 145px;
+}
+
+.logout-btn:hover {
+    background-color: transparent; /* S'assure qu'il reste transparent au survol */
+    opacity: 0.7; /* Ajoute un léger effet de transparence au hover */
+}
+
+.update-profile-btn {
+  display: block;
+  width: 50%;
+  padding: 5px 0;
+  background-color: transparent; /* Supprime l'arrière-plan */
+  color: #181717;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease; /* Ajoute un effet de transparence au hover */
+  margin-top: 0px;
+  margin-right: 150px;
+}
+
+.update-profile-btn:hover {
+  background-color: transparent; /* Assure qu'il reste transparent */
+  opacity: 0.7; /* Ajoute un effet de survol */
+}
+
   /* Animation */
   @keyframes fadeIn {
     from {

@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+
+  .private-pages-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+.private-pages-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #545397, #4b78f4, #5155a7);
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s infinite alternate;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  @keyframes gradientAnimation {
+    0% {
+        background-position: 0% 70%;
+    }
+    100% {
+        background-position: 100% 70%;
+    }
+}
+
+.private-pages-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fcfbfb;
+    margin: 1px 0 0 270px; /* Déplacer MS-BILLING manuellement */
+    padding: 10;
+  }
+  .private-pages-content {
+    display: flex;
+    flex: 1;
+    background-color: #f2f2f2;
+  }
+  
+  .sidebar {
+    width: 15%;
+    background: linear-gradient(45deg, #7b93ac, #e1e3ea, #f1f2fa);
+    background-size: 200% 200%;
+    animation: gradientAnimation 30s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar-item {
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fbf9f9;
+    background: linear-gradient(45deg, #7673a4, #839ae0, #6868f8);
+    background-size: 200% 200%;
+    animation: gradientAnimation 30s infinite alternate;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #8f9ac0;
+  }
+  .sidebar-item.active {
+    background-color: #5a5252;
+    color: #fff;
+  }
+  .private-pages-main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    flex: 1;
+    padding: 20px;
+    background-color: #f2f2f2;
+    justify-items: center; /* Centre les cartes */
+    align-items: center;  /* Centre verticalement */
+  }
+
+  .ms-billing-btn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f0f0f0;
+    margin: 1px 0 0 270px; /* Même positionnement */
+    padding: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .ms-billing-btn:hover {
+    color: #333; /* Optionnel : couleur au survol */
+  }
+ 
+
+  .logout-btn {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    transition: color 0.3s;
+  }
+  
+  .logout-btn:hover {
+    color: #f00; /* Change la couleur au survol */
+  }
+  
+  .logout-icon {
+    font-size: 24px; /* Taille de l'icône */
+  }
+
+  .back-btn {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f0f0f0;
+  }
+  
+  .back-btn:hover {
+    color: #f00;
+  }
+
+  .private-pages-Path {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+    gap: 5px; /* Espace entre les boutons */
+}
+
+.private-pages-Path-button {
+    background: none;
+    border: none;
+    color: rgb(73, 52, 112);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.private-pages-Path-icon {
+    font-size: 14px;
+    color: rgb(73, 52, 112);
+}

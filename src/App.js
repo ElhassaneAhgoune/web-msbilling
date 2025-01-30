@@ -6,6 +6,7 @@ import Signup from "./components/pages/public_pages/Signup";
 import ForgotPassword from "./components/pages/public_pages/ForgotPassword";
 import Home from "./components/pages/private_pages/Home";
 import UploadBills from "./components/pages/private_pages/UploadBills";
+import UploadBillsValidation from "./components/pages/private_pages/UploadBillsValidation";
 import DisplayBills from "./components/pages/private_pages/DisplayBills";
 import DisplayBillsList from "./components/pages/private_pages/DisplayBillsList"; // ✅ Ajout de DisplayBillsList
 import VerificationEmail from "./components/pages/public_pages/VerificationEmail";
@@ -25,6 +26,7 @@ function App() {
           {/* Routes protégées */}
           <Route path="/home" element={<PrivateRoute element={<Home />} />} />
           <Route path="/upload-bills" element={<PrivateRoute element={<UploadBills />} />} />
+          <Route path="/Upload-bills-validation" element={<PrivateRoute element={<UploadBillsValidation />} />} /> {/* ✅ Ajout de la route */}
           <Route path="/display-bills" element={<PrivateRoute element={<DisplayBills />} />} />
           <Route path="/display-bills-list" element={<PrivateRoute element={<DisplayBillsList />} />} /> {/* ✅ Ajout de la route */}
         </Routes>

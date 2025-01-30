@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./DisplayBillsList.css";
+import "../../common/PrivatePages.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../../hooks/useAuth"; 
@@ -20,8 +21,8 @@ const DisplayBillsList = () => {
   ]);
 
   return (
-    <div className="display-bills-container">
-      <header className="display-bills-header">
+    <div className="private-pages-container">
+      <header className="private-pages-header">
         <button className="back-btn" onClick={() => navigate("/display-bills")}>
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
@@ -32,7 +33,7 @@ const DisplayBillsList = () => {
         <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
       
-      <div className="display-bills-content">
+      <div className="private-pages-content">
         <div className="sidebar">
           <div className="sidebar-item" onClick={() => navigate("/upload-bills")}>Upload Bills</div>
           <div className="sidebar-item active">Display Bills</div>
@@ -42,61 +43,19 @@ const DisplayBillsList = () => {
         </div>
 
         <div className="main-content">
-          <div 
-                         className="UB-title" 
-                         style={{ 
-                           display: 'flex', 
-                           alignItems: 'center', 
-                           width: '100%',
-                           textDecoration: 'underline',
-                           textDecorationColor: 'black',
-                           textDecorationThickness: '2px',
-                           gap: '5px' // Espace entre les boutons
-                         }}
-                       >
-                         <button 
-                           onClick={() => navigate("/home")} 
-                           style={{ 
-                             background: 'none', 
-                             border: 'none', 
-                             color: 'black', 
-                             fontWeight: 'bold', 
-                             fontSize: '16px', 
-                             cursor: 'pointer', 
-                             textDecoration: 'underline' 
-                           }}
-                         >
-                           MS-BILLING
-                         </button>
-                         <FontAwesomeIcon icon={faGreaterThan}  style={{ fontSize: '14px', color: 'black' }} />      <button 
-                           onClick={() => navigate("/display-bills")} 
-                           style={{ 
-                             background: 'none', 
-                             border: 'none', 
-                             color: 'black', 
-                             fontWeight: 'bold', 
-                             fontSize: '16px', 
-                             cursor: 'pointer', 
-                             textDecoration: 'underline' 
-                           }}
-                         >
-                           DISPLAY BILLS
-                         </button>
-                         <FontAwesomeIcon icon={faGreaterThan}  style={{ fontSize: '14px', color: 'black' }} />      <button 
-                           onClick={() => navigate("/display-bills-list")} 
-                           style={{ 
-                             background: 'none', 
-                             border: 'none', 
-                             color: 'black', 
-                             fontWeight: 'bold', 
-                             fontSize: '16px', 
-                             cursor: 'pointer', 
-                             textDecoration: 'underline' 
-                           }}
-                         >
-                           BILLS LIST
-                         </button>
-                       </div>
+        <div className="private-pages-Path">
+                       <button onClick={() => navigate("/home")} className="private-pages-Path-button">
+                         MS-BILLING
+                       </button>
+                       <FontAwesomeIcon icon={faGreaterThan} className="private-pages-Path-icon" />
+                       <button onClick={() => navigate("/display-bills")} className="private-pages-Path-button">
+                         DISPLAY BILLS
+                       </button>
+                       <FontAwesomeIcon icon={faGreaterThan} className="private-pages-Path-icon" />
+                       <button onClick={() => navigate("/display-bills-list")} className="private-pages-Path-button">
+                        BILLS LIST
+                       </button>
+                     </div>
           
 
           <div className="bills-table-container">

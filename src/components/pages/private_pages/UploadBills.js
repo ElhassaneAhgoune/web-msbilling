@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UploadBills.css";
+import "../../common/PrivatePages.css";
 import useAuth from "../../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
@@ -32,9 +33,10 @@ const UploadBills = () => {
   // Gestion des états "loading" ou absence d'utilisateur
 
 
+
   return (
-    <div className="upload-bills-container">
-      <header className="upload-bills-header">
+    <div className="private-pages-container">
+      <header className="private-pages-header">
         <button className="back-btn" onClick={handleBack}>
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span>Back</span>
@@ -47,7 +49,7 @@ const UploadBills = () => {
 </button>
         <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
-      <div className="upload-bills-content">
+      <div className="private-pages-content">
         <div className="sidebar">
           <div className="sidebar-item active">Upload Bills</div>
           <div
@@ -61,44 +63,12 @@ const UploadBills = () => {
           <div className="sidebar-item">Catalogues Management</div>
         </div>
         <div className="main-content">
-        <div 
-      className="UB-title" 
-      style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        width: '100%',
-        textDecoration: 'underline',
-        textDecorationColor: 'black',
-        textDecorationThickness: '2px',
-        gap: '5px' // Espace entre les boutons
-      }}
-    >
-      <button 
-        onClick={() => navigate("/home")} 
-        style={{ 
-          background: 'none', 
-          border: 'none', 
-          color: 'black', 
-          fontWeight: 'bold', 
-          fontSize: '16px', 
-          cursor: 'pointer', 
-          textDecoration: 'underline' 
-        }}
-      >
+        <div className="private-pages-Path">
+      <button onClick={() => navigate("/home")} className="private-pages-Path-button">
         MS-BILLING
       </button>
-      <FontAwesomeIcon icon={faGreaterThan}  style={{ fontSize: '14px', color: 'black' }} />      <button 
-        onClick={() => navigate("/upload-bills")} 
-        style={{ 
-          background: 'none', 
-          border: 'none', 
-          color: 'black', 
-          fontWeight: 'bold', 
-          fontSize: '16px', 
-          cursor: 'pointer', 
-          textDecoration: 'underline' 
-        }}
-      >
+      <FontAwesomeIcon icon={faGreaterThan} className="private-pages-Path-icon" />
+      <button onClick={() => navigate("/upload-bills")} className="private-pages-Path-button">
         UPLOAD BILLS
       </button>
     </div>
@@ -111,31 +81,32 @@ const UploadBills = () => {
                   <select>
                     <option>Visa</option>
                     <option>MasterCard</option>
-                    <option>Amex</option>
                   </select>
                 </div>
               </div>
             </form>
           </div>
 
-          {/* Zone d'importation placée en dessous */}
           <div className="upload-box">
-            {/* Zone d'importation en tant que bouton */}
-            <label htmlFor="file-upload" className="upload-box-label">
-              <FontAwesomeIcon icon={faCloudUploadAlt} size="3x" className="upload-icon" />
-              <p>Click or drag your CSV file(s) to upload</p>
-            </label>
-            {/* Input de fichier caché */}
-            <input
-              type="file"
-              id="file-upload"
-              accept=".csv"
-              onChange={handleFileUpload}
-              style={{ display: "none" }}
-            />
-            {/* Message de succès */}
-            {fileImported && <p className="success-message">File imported with success!</p>}
-          </div>
+  {/* Zone d'importation en tant que bouton */}
+  <label htmlFor="file-upload" className="upload-box-label">
+    <FontAwesomeIcon icon={faCloudUploadAlt} size="3x" className="upload-icon" />
+    <p>Click or drag your CSV file(s) to upload</p>
+  </label>
+  {/* Input de fichier caché */}
+  <input
+    type="file"
+    id="file-upload"
+    accept=".csv"
+    onChange={(event) => {
+      handleFileUpload(event);
+      navigate("/upload-bills-validation"); // Redirection après l'upload
+    }}
+    style={{ display: "none" }}
+  />
+  {/* Message de succès */}
+  {fileImported && <p className="success-message">File imported with success!</p>}
+</div>
         </div>
       </div>
     </div>

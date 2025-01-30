@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
+import "../../common/PrivatePages.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUploadAlt, faFileAlt, faChartBar, faBook } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../../hooks/useAuth";
@@ -20,8 +21,8 @@ const Home = () => {
 
   
   return (
-    <div className="home-container">
-      <header className="home-header">
+    <div className="private-pages-container">
+      <header className="private-pages-header">
       <button 
   onClick={() => navigate("/home")} 
   className="h-ms-billing-btn"
@@ -31,7 +32,8 @@ const Home = () => {
 
         <UserProfileMenu user={user} onLogout={handleLogout} />
       </header>
-      <div className="home-content">
+      <div className="private-pages-content">
+       
         <div className="sidebar">
           <Link to="/upload-bills" className="sidebar-item">Upload Bills</Link>
           <Link to="/display-bills" className="sidebar-item">Display Bills</Link>
@@ -39,7 +41,7 @@ const Home = () => {
           <Link to="/dashboards" className="sidebar-item">Dashboards</Link>
           <Link to="/catalogues-management" className="sidebar-item">Catalogues Management</Link>
         </div>
-        <div className="home-main-content">
+        <div className="private-pages-main-content">
           <div className="card" onClick={() => navigate("/upload-bills")}>
             <div className="card-icon">
               <FontAwesomeIcon icon={faCloudUploadAlt} size="2x" />

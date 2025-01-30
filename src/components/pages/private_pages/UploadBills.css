@@ -1,57 +1,11 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-}
 
-.upload-bills-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
-.upload-bills-header {
-  display: flex;
-  align-items: center;
-  background-color: #e0e0e0;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
 
-.upload-bills-header h1 {
-  flex: 1;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
-  margin: 1px 0 0 270px;
-  padding: 10;
-}
 
-.back-btn {
-  position: absolute;
-  left: 20px;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #000;
-}
 
-.back-btn:hover {
-  color: #f00;
-}
 
-.upload-bills-content {
-  display: flex;
-  flex: 1;
-  background-color: #f2f2f2;
-}
+
+
 
 .sidebar {
   width: 15%;
@@ -125,7 +79,9 @@ body {
 
 .select-box {
   margin-top: 20px;
-  background-color: #d7d4d4;
+  background: linear-gradient(45deg, #8887c3, #a1b2e0, #a7abf6);
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s infinite alternate;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -147,19 +103,4 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-}
-.ms-billing-btn {
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
-  margin: 1px 0 0 889px; /* Même positionnement */
-  padding: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.ms-billing-btn:hover {
-  color: #333; /* Optionnel : couleur au survol */
 }

@@ -44,9 +44,9 @@
   background: #555;
 }
 
-.forgot-password {
+.forgot-password a {
   margin-top: 10px;
-  color: #314050;
+  color: #f6f8fa;
   cursor: pointer;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .signup a {
-  color: #12477f;
+  color: #f6f8fa;
   text-decoration: none;
 }
 

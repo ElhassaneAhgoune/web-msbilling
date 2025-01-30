@@ -1,0 +1,35 @@
+.validation-results {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #c8c8cb, #f3f4f6, #ecedf8);
+      background-size: 200% 200%;
+      animation: gradientAnimation 15s infinite alternate;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .validation-results h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .validation-results ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .validation-results li {
+    padding: 10px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .success-message {
+    color: #27ae60;
+    font-weight: bold;
+    margin-top: 15px;
+  }
