@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import "./UserProfileMenu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faPhone, faIdBadge } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+
 
 const UserProfileMenu = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
 
   const getInitials = (firstName, lastName) => {
     return `${firstName?.charAt(0).toUpperCase() || ""}${lastName?.charAt(0).toUpperCase() || ""}`;
@@ -45,8 +49,8 @@ const UserProfileMenu = ({ user, onLogout }) => {
             </p>
           </div>
           <div className="menu-divider"></div>
-          <button className="update-profile-btn" onClick={onLogout}>
-            <strong>Update Profile</strong>
+          <button className="update-profile-btn" onClick={() => navigate("/update-profile")}>
+          <strong>Update Profile</strong>
           </button>
           <div className="menu-divider"></div>
           <button className="logout-btn" onClick={onLogout}>
