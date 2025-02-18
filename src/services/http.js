@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Créer une instance Axios avec la configuration de base
 const http = axios.create({
-  baseURL: "http://ec2-52-3-213-37.compute-1.amazonaws.com:8080", // Remplacez par l'URL de votre backend
+  baseURL: "http://ec2-54-146-132-147.compute-1.amazonaws.com:8080/", // Remplacez par l'URL de votre backend
   headers: {
     "Content-Type": "application/json",
   },
