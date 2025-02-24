@@ -9,7 +9,8 @@ import UploadBills from "./components/pages/private_pages/UploadBills";
 import UploadBillsValidation from "./components/pages/private_pages/UploadBillsValidation";
 import DisplayBills from "./components/pages/private_pages/DisplayBills";
 import UpdateProfile from "./components/pages/private_pages/UpdateProfile";
-import DisplayBillsList from "./components/pages/private_pages/DisplayBillsList"; // ✅ Ajout de DisplayBillsList
+import DisplayBillsList from "./components/pages/private_pages/DisplayBillsList"; // 
+import FileDetails   from "./components/pages/private_pages/FileDetails"; // 
 import VerificationEmail from "./components/pages/public_pages/VerificationEmail";
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Upload-bills-validation" element={<PrivateRoute element={<UploadBillsValidation />} />} /> {/* ✅ Ajout de la route */}
           <Route path="/display-bills" element={<PrivateRoute element={<DisplayBills />} />} />
           <Route path="/display-bills-list" element={<PrivateRoute element={<DisplayBillsList />} />} /> {/* ✅ Ajout de la route */}
+          <Route path="/file-details/:csvName" element={<FileDetails />} />
           <Route path="/update-profile" element={<PrivateRoute element={<UpdateProfile />} />} />
 
         </Routes>

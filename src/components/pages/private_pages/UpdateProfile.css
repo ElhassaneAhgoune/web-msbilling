@@ -1,151 +1,81 @@
-/* Corps de la page */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  
-  /* Conteneur principal */
-  .update-profile-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  /* Barre d'en-tête */
-  .update-profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .update-profile-header h1 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .back-btn {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #000;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .back-btn:hover {
-    color: #007bff;
-  }
-  
-  .back-btn svg {
-    margin-right: 5px;
-  }
-  
-  /* Contenu principal */
-  .update-profile-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    flex: 1;
-    overflow-y: auto;
-  }
-  
-  /* En-tête utilisateur */
-  .user-info-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .user-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 36px;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-  }
-  
-  .user-info-header h2 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  /* Section User Information */
-  .user-info-section {
-    width: 100%;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-info-section h3 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #007bff;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .input-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .input-container input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .input-container input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
-  }
-  
-  .update-btn {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .update-btn:hover {
-    background-color: #0056b3;
-  }
-  
+
+
+.update-box {
+  background: linear-gradient(45deg, #8887c3, #a1b2e0, #a7abf6);
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s infinite alternate;  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 150%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-left: 110px;
+  width: 1100px;
+}
+.update-box h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.update-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.update-form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.update-form input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.readonly-field {
+  background-color: #f0f0f0;
+  color: #666;
+  border: 1px solid #ddd;
+  cursor: not-allowed;
+}
+
+.save-btn {
+  margin-top: 20px;
+  background-color: #514382;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #4a4242;
+}
+
+.message {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+

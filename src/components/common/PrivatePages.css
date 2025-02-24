@@ -165,3 +165,56 @@ body {
     font-size: 14px;
     color: rgb(73, 52, 112);
 }
+/* Assure que la partie principale ne déborde pas */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px); /* Ajuste selon ton header */
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Conteneur global du tableau */
+.table-container {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Wrapper pour ajouter un scroll si nécessaire */
+.table-wrapper {
+  max-width: 100%;
+  max-height: calc(100vh - 200px); /* Ajuste pour ne pas dépasser la page */
+  overflow-x: auto; /* Scroll horizontal si nécessaire */
+  overflow-y: auto; /* Scroll vertical si nécessaire */
+  border: 1px solid #ddd;
+  background: #f2f2f2;
+  padding: 0px;
+  width: 100%;
+}
+
+/* Ajustement de la table */
+.bills-table {
+  width: 100%; /* Remplit tout l’espace disponible */
+  min-width: 800px; /* Évite que la table soit trop serrée */
+  border-collapse: collapse;
+}
+
+/* Fixe l'en-tête en haut du tableau */
+.bills-table thead {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+/* Espacement des cellules */
+.bills-table th, .bills-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap; /* Empêche le texte de se couper */
+}

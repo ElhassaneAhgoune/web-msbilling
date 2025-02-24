@@ -7,42 +7,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCloudUploadAlt, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../../contexts/UserContext";
 import UserProfileMenu from "../../common/UserProfileMenu";
+import { uploadInvoice } from "../../../services/invoiceService"; // Import du service
 
 const UploadBills = () => {
   const navigate = useNavigate();
   const { handleLogout } = useAuth();
-  const [fileImported, setFileImported] = useState(false);
   const { user } = useContext(UserContext);
-  const [uploadedFiles, setUploadedFiles] = useState([]); // Stocker les fichiers
+  const [network, setNetwork] = useState("Visa"); // Réseau par défaut
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Gestion du bouton "Back"
   const handleBack = () => {
     navigate("/home");
   };
 
-  // Gestion de l'importation du fichier
-  const handleFileUpload = (event) => {
+  // Gestion de la sélection du réseau
+  const handleNetworkChange = (event) => {
+    setNetwork(event.target.value);
+  };
+
+  // Fonction d'upload de fichier
+  const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-    if (file) {
-      setFileImported(true);
-      setUploadedFiles([file]);
+    if (!file) return;
 
-      console.log("Fichier importé :", file.name);
+    // Validation du type de fichier (CSV uniquement)
+    if (!file.name.endsWith(".csv")) {
+      setErrorMessage("❌ Please upload a valid CSV file.");
+      return;
+    }
 
-      // Lire le fichier pour récupérer plus d'infos (ex: nombre de lignes)
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const content = e.target.result;
-        const lines = content.split("\n").length; // Compter les lignes du fichier
+    setErrorMessage(""); // Réinitialiser les erreurs
 
-        // Rediriger vers UploadBillsValidation en passant les infos du fichier
-        navigate("/upload-bills-validation", {
-          state: {
-            files: [{ name: file.name, size: file.size, lines }]
-          }
-        });
-      };
-      reader.readAsText(file); // Lire le fichier comme un texte
+    try {
+      const response = await uploadInvoice(network, file);
+
+      // Rediriger vers UploadBillsValidation avec les infos du fichier et du réseau
+      navigate("/upload-bills-validation", {
+        state: {
+          success: true,
+          files: [{ name: file.name, size: file.size }],
+          network: network,
+          message: "✅ File uploaded successfully!",
+        },
+      });
+    } catch (error) {
+      // En cas d'erreur, rediriger vers UploadBillsValidation avec le message d'erreur
+      navigate("/upload-bills-validation", {
+        state: {
+          success: false,
+          files: [{ name: file.name, size: file.size }],
+          network: network,
+          message: error.message || "❌ An error occurred during upload.",
+        },
+      });
     }
   };
 
@@ -79,22 +97,22 @@ const UploadBills = () => {
             </button>
           </div>
 
-          {/* Zone de sélection du réseau */}
+          {/* Sélection du réseau */}
           <div className="select-box">
-            <h>Select Network:</h>
+            <h2>Select Network:</h2>
             <form className="search-form">
               <div className="form-row">
                 <div className="form-group">
-                  <select>
-                    <option>Visa</option>
-                    <option>MasterCard</option>
+                  <select value={network} onChange={handleNetworkChange}>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
                   </select>
                 </div>
               </div>
             </form>
           </div>
 
-          {/* Zone d'upload */}
+          {/* Upload de fichier */}
           <div className="upload-box">
             <label htmlFor="file-upload" className="upload-box-label">
               <FontAwesomeIcon icon={faCloudUploadAlt} size="3x" className="upload-icon" />
@@ -107,8 +125,10 @@ const UploadBills = () => {
               onChange={handleFileUpload}
               style={{ display: "none" }}
             />
-            {fileImported && <p className="success-message">✅ File imported successfully!</p>}
           </div>
+
+          {/* Affichage des erreurs */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
       </div>
     </div>

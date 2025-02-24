@@ -1,100 +1,137 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
+import "../../common/PrivatePages.css";
+import "./UpdateProfile.css";
+import useAuth from "../../../hooks/useAuth";
+import UserProfileMenu from "../../common/UserProfileMenu";
+import { UserContext } from "../../../contexts/UserContext";
+import updateUserService from "../../../services/updateUserService";
 
 const UpdateProfile = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
   const navigate = useNavigate();
+  const { handleLogout } = useAuth();
+  const { user, setUser, loading } = useContext(UserContext);
 
-  // Simuler la récupération des informations utilisateur à la première connexion
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    timezone: "",
+    locale: "",
+  });
+
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // "success" ou "error"
+
   useEffect(() => {
-    // Normalement, vous récupérez les données utilisateur via une API ici
-    const userData = {
-      firstName: "John",
-      lastName: "Doe",
-      email: "john.doe@example.com",
-      phoneNumber: "+123456789",
-    };
-    
-    setFirstName(userData.firstName);
-    setLastName(userData.lastName);
-    setEmail(userData.email);
-    setPhoneNumber(userData.phoneNumber);
-  }, []);
+    if (!loading && !user) {
+      navigate("/");
+    } else if (user) {
+      setFormData({
+        username: user.username || "",
+        email: user.email || "",
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        phoneNumber: user.phoneNumber || "",
+        timezone: user.timezone || "",
+        locale: user.locale || "",
+      });
+    }
+  }, [user, loading, navigate]);
 
-  // Fonction de gestion de la mise à jour du profil
-  const handleUpdateProfile = async (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
+    setMessage(""); // Réinitialisation du message
 
     try {
-      // Vous pouvez appeler votre API de mise à jour du profil ici
-      // const response = await authService.updateProfile({ firstName, lastName, email, phoneNumber });
+      const updatedUser = await updateUserService.updateUserProfile({
+        username: formData.username,
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phoneNumber: formData.phoneNumber,
+        timezone: formData.timezone,
+        locale: formData.locale,
+      });
 
-      // Simuler la mise à jour réussie
-      console.log("Profil mis à jour :", { firstName, lastName, email, phoneNumber });
+      // ✅ Mettre à jour le contexte utilisateur immédiatement
+      setUser(updatedUser);
 
-      // Après la mise à jour, vous pouvez rediriger l'utilisateur
-      navigate("/home");
-    } catch (err) {
-      console.error("Échec de la mise à jour :", err);
-      setError("Une erreur est survenue. Veuillez réessayer.");
-    } finally {
-      setLoading(false);
+      // ✅ Sauvegarde des nouvelles données dans localStorage pour éviter le problème au refresh
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      setMessage("Profile updated successfully!");
+      setMessageType("success");
+
+      
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      setMessage("Failed to update profile. Please try again.");
+      setMessageType("error");
     }
   };
 
   return (
-    <div className="update-profile-container">
-      <h1>Update Profile</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleUpdateProfile}>
-        <div className="input-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="update-btn" disabled={loading}>
-          {loading ? "Updating..." : "Update Profile"}
+    <div className="private-pages-container">
+      <header className="private-pages-header">
+        <button onClick={() => navigate("/home")} className="h-ms-billing-btn">
+          MS-BILLING
         </button>
-      </form>
+        <UserProfileMenu user={user} onLogout={handleLogout} />
+      </header>
+
+      <div className="private-pages-content">
+        <div className="sidebar">
+          <button className="sidebar-item" onClick={() => navigate("/home")}>
+            Home
+          </button>
+        </div>
+
+        <div className="private-pages-main-content">
+          <div className="update-box">
+            <h2>Update Profile</h2>
+
+            {/* ✅ Affichage du message de succès/erreur */}
+            {message && (
+              <div className={`message ${messageType}`}>
+                {message}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="update-form">
+              <label>Username:</label>
+              <input type="text" name="username" value={formData.username} disabled className="readonly-field" />
+
+              <label>Email:</label>
+              <input type="email" name="email" value={formData.email} disabled className="readonly-field" />
+
+              <label>First Name:</label>
+              <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+
+              <label>Last Name:</label>
+              <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+
+              <label>Phone Number:</label>
+              <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
+
+              <label>Timezone:</label>
+              <input type="text" name="timezone" value={formData.timezone} onChange={handleChange} required />
+
+              <label>Locale:</label>
+              <input type="text" name="locale" value={formData.locale} onChange={handleChange} required />
+
+              <button type="submit" className="save-btn">Save Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
